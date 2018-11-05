@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.centerContainer {
+    width: 399px;
+    margin: 0 auto;
+}
+
+.loginInput {
+ width: 399px;
+}
+

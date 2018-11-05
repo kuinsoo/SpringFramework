@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- kr.or.ddit.ioc.CollectionBean 스프링 빈으로 등록하기 -->
+	<bean id="collectionBean" class="kr.or.ddit.ioc.CollectionBean">
+	<property name="list">
+		<list>
+			<value>brown</value>
+			<value>edward</value>
+			<value>sally</value>
+		</list>
+	</property>
+	
+	<property name="set">
+		<set>
+			<value>set1</value>
+			<value>set10</value>
+			<value>set100</value>
+		</set>
+	</property>
+	
+	<property name="map">
+		<map>
+			<entry key="name" value="KKu" />	
+			<entry key="age" value="15" />	
+		</map>
+	</property>
+	
+	<property name="property">
+		<props>
+			<prop key="db.userId">kis</prop>
+			<prop key="db.password">java</prop>
+		</props>
+	</property>
+	
+	
+	</bean>
+
+</beans>
