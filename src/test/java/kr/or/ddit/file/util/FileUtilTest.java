@@ -1,4 +1,4 @@
-package kr.or.ddit.user.web;
+package kr.or.ddit.file.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,13 +19,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.ddit.file.model.FileVo;
 import kr.or.ddit.user.model.UserVo;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/servletContext.xml","classpath:kr/or/ddit/config/spring/root-context.xml"})
 @WebAppConfiguration //spring container 를 web 기반 컨테이너로 생성
-public class UserControllerTest {
+public class FileUtilTest {
 
 	private Logger logger = LoggerFactory.getLogger(UserVo.class);
 	
@@ -39,49 +39,35 @@ public class UserControllerTest {
 		 mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
+	
 	@Test
-	public void loginView() throws Exception {
+	public void getFileExtExists() throws Throwable {
 		/***Given***/
-		MvcResult mvcResult = mockMvc.perform(get("/user/loginView")).andReturn();
+		String fileName = "sally.png";
 		/***When***/
-		ModelAndView mav = mvcResult.getModelAndView();
+		String ext = FileUtil.fileExt(fileName);
 		/***Then***/
-		assertEquals("login/login", mav.getViewName());
+		assertEquals(".png",ext);
 	}
 	
 	@Test
-	public void loginProcess() throws Exception {
+	public void getFileNotExtExists() {
 		/***Given***/
-		MvcResult mvcResult = mockMvc.perform(post("/user/loginProcess").param("userId", "brown").param("pass", "brownpass")).andReturn();
+		String fileName = "sally";
 		/***When***/
-		String userId = (String) mvcResult.getRequest().getParameter("userId");
-		logger.debug("userId : {}",userId);
-		String pass = (String) mvcResult.getRequest().getParameter("pass");
-		ModelAndView mav = mvcResult.getModelAndView();
-		String result="";
-		if(userId.equals("brown") || pass.equals("brownpass")) {
-			result = "main";
-		}
-		logger.debug("{}",mav.getViewName());
+		String ext = FileUtil.fileExt(fileName);
 		/***Then***/
-		assertEquals(result, mav.getViewName());
+		assertEquals("",ext);
 	}
 	
 	@Test
-	public void loginProcessFailTest() throws Exception {
+	public void getFileExtExistsMultiDot() throws Throwable {
 		/***Given***/
-		MvcResult mvcResult = mockMvc.perform(post("/user/loginProcess").param("userId", "brown").param("pass", "1")).andReturn();
+		String fileName = ".png";
 		/***When***/
-		String userId = (String) mvcResult.getRequest().getParameter("userId");
-		String pass = (String) mvcResult.getRequest().getParameter("pass");
-		ModelAndView mav = mvcResult.getModelAndView();
-		String result="";
-		if(userId.equals("brown") || pass.equals("1")) {
-			result = "login/login";
-		}
-		logger.debug("fail : {}",mav.getViewName());
+		String ext = FileUtil.fileExt(fileName);
 		/***Then***/
-		assertEquals(result, mav.getViewName());
+		assertEquals(".png",ext);
 	}
 
 }

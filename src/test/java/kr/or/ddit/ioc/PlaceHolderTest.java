@@ -25,7 +25,7 @@ public class PlaceHolderTest {
 		
 		String user = placeHoldProperty.getUser();
 		/***Then***/
-		assertEquals("kis", user);
+		assertEquals("kuinsoo", user);
 		
 	}
 

@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/servletContext.xml"})
+@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/servletContext.xml","classpath:kr/or/ddit/config/spring/root-context.xml" })
 @WebAppConfiguration		//spring IoC 컨테이너 구성을  web 환경에 맞게 구성
 public class MvcControllerTest {
 	private static Logger logger = LoggerFactory.getLogger(MvcController.class);
@@ -70,6 +70,18 @@ public class MvcControllerTest {
 		logger.debug("rangers.size : {}", rangers.size());
 		assertEquals("mvc/view2", viewName);
 		assertEquals(3, rangers.size());
+	}
+	
+	@Test
+	public void fileUploadTest() throws Throwable {
+		/***Given***/
+		MvcResult mvcResult = mockMvc.perform(get("/mvc/fileupload")).andReturn();
+		/***When***/
+		ModelAndView mav = mvcResult.getModelAndView();
+		logger.debug("fileupload : {}",mav.getViewName());
+		/***Then***/
+		assertEquals("mvc/fileuploadView", mav.getViewName());
+		
 	}
 
 }
