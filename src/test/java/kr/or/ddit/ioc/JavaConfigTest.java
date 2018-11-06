@@ -1,7 +1,6 @@
 package kr.or.ddit.ioc;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 import javax.annotation.Resource;
 

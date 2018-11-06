@@ -1,51 +1,26 @@
 package kr.or.ddit.hello;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.ui.Model;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.ddit.test.ControllerTest;
 import kr.or.ddit.user.model.UserVo;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/servletContext.xml", "classpath:kr/or/ddit/config/spring/root-context.xml"})
-@WebAppConfiguration		//spring IoC 컨테이너 구성을  web 환경에 맞게 구성
-public class HelloControllerTest {
+@SuppressWarnings("unchecked")
+public class HelloControllerTest extends ControllerTest {
 	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 	private static Logger loggerVo = LoggerFactory.getLogger(UserVo.class);
-	
-	@Autowired
-	private WebApplicationContext ctx; //spring IoC 컨테이너
-	
-	private MockMvc mockMvc; 		// dispatcher servlet (front controller)
-	
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
-	}
-	
+		
 	@Test
 	public void helloTest() throws Throwable {
 		/***Given***/
@@ -67,7 +42,6 @@ public class HelloControllerTest {
 		/***When***/
 		MvcResult mvcResult = mockMvc.perform(get("/hello/model")).andReturn();
 		ModelAndView mav = mvcResult.getModelAndView();
-		String viewName = mav.getViewName();
 		List<String> rangers =   (List<String>) mav.getModel().get("rangers");
 //		List<String> rangersMap =   (List<String>) mav.getModelMap().get("rangers");
 		/***Then***/
@@ -88,12 +62,9 @@ public class HelloControllerTest {
 		ModelAndView mav = mvcResult.getModelAndView();
 		logger.debug("user : {}",user);
 		//view name 
-		String viewName = mav.getViewName();
 		
 		//userId, pass 속성
 		String userId = (String)mav.getModel().get("userId");
-		String pass = (String)mav.getModel().get("pass");
-		
 		
 		/***Then***/
 		assertEquals(user, userId);

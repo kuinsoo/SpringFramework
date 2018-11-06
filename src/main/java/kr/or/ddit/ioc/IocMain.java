@@ -18,6 +18,7 @@ public class IocMain {
 	public static void main(String[] args) {
 		
 		//스프링 컨테이너 생성
+		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {
 				"classpath:kr/or/ddit/ioc/application-context.xml"
 		});
