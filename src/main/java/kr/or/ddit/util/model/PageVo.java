@@ -1,4 +1,4 @@
-package kr.or.ddit.util.medel;
+package kr.or.ddit.util.model;
 
 public class PageVo {
 	

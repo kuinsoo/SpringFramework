@@ -28,7 +28,7 @@
             <span>Charts</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/post">
+          <a class="nav-link" href="/user/userAllList">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
         </li>

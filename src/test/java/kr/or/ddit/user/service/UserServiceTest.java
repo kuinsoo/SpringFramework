@@ -8,20 +8,25 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.test.ServiceDaoTestConfig;
 import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.user.userService.UserService;
-import kr.or.ddit.util.medel.PageVo;
+import kr.or.ddit.user.userService.UserServiceInf;
+import kr.or.ddit.util.model.PageVo;
 
 @SuppressWarnings("unchecked")
 public class UserServiceTest extends ServiceDaoTestConfig {
 	
+	private static Logger logger = LoggerFactory.getLogger(UserVo.class);
 	
 	
 	// junit 실행주기 
@@ -36,30 +41,30 @@ public class UserServiceTest extends ServiceDaoTestConfig {
 	// before --> selectUser(String) --> after
 	// before --> selectUser(UserVo) --> after
 	//afterClass로 실행
+	@Resource(name="userService")
+	private UserServiceInf userService;
 	
-	private UserService userService;
 	private final String TETUSERID = "test";
 	
 	@BeforeClass
 	public static void beforeClass(){
-		System.out.println("beforeClass");
+		logger.debug("beforeClass");
 	}
 	
 	@AfterClass
 	public static void afterClass(){
-		System.out.println("afterClass");
+		logger.debug("afterClass");
 	}
 	
 	@Before
 	public void beore(){
-		System.out.println("before");
-		userService = new UserService();
+		logger.debug("before");
 		userService.deleteUser(TETUSERID);
 	}
 	
 	@After
 	public void after(){
-		System.out.println("after");
+		logger.debug("after");
 	}
 	
 	// DB에 jspuser 부분의 회원이 몇명있는지 확인하는 부분 
@@ -71,7 +76,7 @@ public class UserServiceTest extends ServiceDaoTestConfig {
 		
 		/***When : 어떤 동작 수행(메소드 호출)***/
 		List<UserVo> list = userService.selectUserAll();
-		System.out.println(list);
+		logger.debug("list {}",list);
 		
 
 		//select 'X' as result from dual

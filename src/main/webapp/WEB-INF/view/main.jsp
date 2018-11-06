@@ -17,11 +17,11 @@
 <!-- navbar.jsp -->
 <%@ include file="/WEB-INF/view/navbar.jsp" %>
 
+ 	<%@ include file="/WEB-INF/view/common/left.jsp" %>
 
 <div id="wrapper">
 <!-- side -->
-<%@ include file="/WEB-INF/view/sidebar.jsp" %>
- 	
+<%-- <%@ include file="/WEB-INF/view/sidebar.jsp" %> --%>
 	<div id="content-wrapper">
 		<div class="container-fluid">
 <!-- container -->

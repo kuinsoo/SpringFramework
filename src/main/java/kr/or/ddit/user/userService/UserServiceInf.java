@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.util.medel.PageVo;
+import kr.or.ddit.util.model.PageVo;
 
 public interface UserServiceInf {
 	

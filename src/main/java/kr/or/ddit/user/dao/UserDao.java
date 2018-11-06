@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.config.db.SqlFactoryBuilder;
 import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.util.medel.PageVo;
+import kr.or.ddit.util.model.PageVo;
 
 @Repository
 public class UserDao implements UserDaoInf {

@@ -16,7 +16,7 @@ public class FileDao implements FileDaoInf{
 	}
 
 	/**
-	* Method : insertFile
+	* Method : insertFile	
 	* 작성자 : Mr.KKu
 	* 변경이력 :
 	* @param fileVo

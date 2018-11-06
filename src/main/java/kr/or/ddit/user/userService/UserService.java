@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.config.db.SqlFactoryBuilder;
-import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.dao.UserDaoInf;
 import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.util.medel.PageVo;
+import kr.or.ddit.util.model.PageVo;
 
 @Service
 public class UserService implements UserServiceInf {
@@ -27,7 +28,8 @@ public class UserService implements UserServiceInf {
 		return us;
 	}
 
-	private UserDaoInf ud = UserDao.getInstance();
+	@Resource(name="userDao")
+	private UserDaoInf ud;
 
 	
 	@Override
@@ -58,7 +60,7 @@ public class UserService implements UserServiceInf {
 	public Map<String , Object> selectUserPageList(PageVo pageVo) {
 		
 		// 페이지에 해당 하는 유저 리스트(1~10건) 
-		List<UserVo> userList = ud.selectUserPageList(pageVo);
+		List<UserVo> pageList = ud.selectUserPageList(pageVo);
 		
 		// 페이지 내비게이션을 위한 전체 유저 리스트 조회 
 		int totalUserCnt = ud.getUserCnt();
@@ -66,7 +68,7 @@ public class UserService implements UserServiceInf {
 		//리턴해야 하는게 두건일경우에는 (Map)
 		// 결과를 담는 map
 		Map<String , Object> resultMap = new HashMap<String , Object>();
-		resultMap.put("userList",userList);
+		resultMap.put("pageList",pageList);
 		//Math.ceil가 올림해주는 부분 
 		resultMap.put("pageCnt",
 				(int)Math.ceil((double)totalUserCnt / pageVo.getPageSize()));

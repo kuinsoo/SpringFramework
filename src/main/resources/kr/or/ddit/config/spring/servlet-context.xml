@@ -30,4 +30,7 @@
 		<property name="maxUploadSize" value="5242880" /> 
 		<property name="maxInMemorySize" value="5242880" />
 	</bean>
+	
+	<!-- 날짜 format -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 </beans>

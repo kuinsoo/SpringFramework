@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>index</title>
 <script type="text/javascript">
-	document.location = "";
+	document.location = "/user/loginView";
 </script>
 </head>
 <body>

@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/servletContext.xml","classpath:kr/or/ddit/config/spring/root-context.xml"})
+@ContextConfiguration(locations= {"classpath:kr/or/ddit/config/spring/servlet-context.xml","classpath:kr/or/ddit/config/spring/root-context.xml"})
 @WebAppConfiguration //spring container 를 web 기반 컨테이너로 생성
 public class FileUtilTest {
 	

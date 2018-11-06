@@ -11,12 +11,16 @@ import javax.annotation.Resource;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.test.ServiceDaoTestConfig;
 import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.util.medel.PageVo;
+import kr.or.ddit.util.model.PageVo;
 
 public class UserDaoTest extends ServiceDaoTestConfig {
+	
+	private Logger logger = LoggerFactory.getLogger(UserVo.class);
 	
 	@Resource(name="userDao")
 	private UserDaoInf userDao;
@@ -42,7 +46,7 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 		
 		/***When : 어떤 동작 수행(메소드 호출)***/
 		List<UserVo> list = userDao.selectUserAll();
-		System.out.println(list);
+		logger.debug("{}",list);
 		
 
 		//select 'X' as result from dual

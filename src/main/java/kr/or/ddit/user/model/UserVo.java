@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserVo implements HttpSessionBindingListener {
 
 	// userVo에는 userId,name , alias / brown / 브라운 / 곰) 
@@ -15,11 +18,16 @@ public class UserVo implements HttpSessionBindingListener {
 	private String addr1;
 	private String addr2;
 	private String zipcd;
+	@DateTimeFormat(pattern="yyyyy-MM-dd")
 	private Date birth;
+	
 	private String email;
 	private String tel;
+	
 	private String profile;
 	
+	//식으로 가능하다
+	//MultipartFile profile2;
 	// 페이징 처리
 	private int rnum;
 
