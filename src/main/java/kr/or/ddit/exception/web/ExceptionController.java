@@ -1,7 +1,6 @@
 package kr.or.ddit.exception.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -27,8 +26,5 @@ public class ExceptionController {
         throw new ArithmeticException();
     }
 
-    @ExceptionHandler({ArithmeticException.class})
-    public String exceptionHandler() {
-        return "error/arithmetic";
-    }
+
 }
