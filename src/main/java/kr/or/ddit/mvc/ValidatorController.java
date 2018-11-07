@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ValidatorController {
 	//validator 를 테스트할 view ( /WEB-INF/view/validator/result.jsp)
 	// httpMethod : get
-	@RequestMapping(value = "/view" , method = RequestMethod.GET)
+	@RequestMapping(value = "/validate" , method = RequestMethod.GET)
 	public String view() {
 		return "validator/view";
 	}
@@ -35,7 +35,7 @@ public class ValidatorController {
 
 	// BindingResult 객체는 검증하고자 하는 vo 객체 뒤에 메소드 인자로 넣어야한다.
 	// @@@ 메서드 인자 순서 주의
-	@RequestMapping(value = "/result", method = RequestMethod.POST)
+	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public String validate(UserVo userVo, BindingResult bindingResult, Model model) {
 		new UserVoValidator().validate(userVo, bindingResult);
 
@@ -44,6 +44,12 @@ public class ValidatorController {
 
 		model.addAttribute("userVo", userVo);
 		return "validator/result";
+	}
+
+	@RequestMapping(value = "/validateJsr", method = RequestMethod.POST)
+	public String validateJsr(Model model) {
+
+		return "";
 	}
 
 }

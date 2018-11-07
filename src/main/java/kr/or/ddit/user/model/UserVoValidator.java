@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.swing.*;
+
 /**
  * kr.or.ddit.user.model
  * null.java
@@ -30,9 +32,13 @@ public class UserVoValidator implements Validator {
 		//validation 대상 객체
 		//target --> userVo
 		UserVo userVo = (UserVo)target;
-		if (userVo.getUserId() == null || userVo.getUserId().equals("")) {
-			logger.debug("validate userId");
+		if (userVo.getUserId() == null || userVo.getUserId().equals(""))
 			errors.rejectValue("userId","required");
-		}
+		else if (userVo.getName() == null || userVo.getName().equals(""))
+			errors.rejectValue("name","noName");
+		//pass 길이가 5보다 작으면 error:lengthNotEnough
+		else if (userVo.getPass() == null || userVo.getPass().length()<5)
+			errors.rejectValue("pass","lengthNotEnough");
 	}
+
 }

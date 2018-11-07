@@ -33,4 +33,13 @@
 	
 	<!-- 날짜 format -->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+
+	<!-- messageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/config/msg/error</value>
+			</list>
+		</property>
+	</bean>
 </beans>
