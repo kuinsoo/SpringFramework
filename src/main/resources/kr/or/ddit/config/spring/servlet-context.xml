@@ -34,6 +34,8 @@
 
 	<!-- Json 처리용 bean -->
 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    <!-- custom View 처리 -->
+	<bean id="timesTablesView" class="kr.or.ddit.mvc.view.TimesTablesView"/>
 
 	<!-- RequestPart(multipartResolver 설정 필요) -->
 	<!-- multipart resolver  / id="multipartResolver 는 고정으로 설정되어 있다." -->
