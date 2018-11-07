@@ -1,5 +1,7 @@
 package kr.or.ddit.user.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.servlet.http.HttpSessionBindingEvent;
@@ -10,10 +12,13 @@ public class UserVoJsr303 implements HttpSessionBindingListener {
 
 	// userVo에는 userId,name , alias / brown / 브라운 / 곰)
 
+    @NotEmpty
 	private String userId;
-
+    @NotEmpty
 	private String name;
 	private String alias;
+
+	@Length(min =5)
 	private String pass;
 	private String addr1;
 	private String addr2;

@@ -1,12 +1,16 @@
 package kr.or.ddit.mvc;
 
 import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.UserVoJsr303;
 import kr.or.ddit.user.model.UserVoValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.naming.Binding;
+import javax.validation.Valid;
 
 /**
  * kr.or.ddit.mvc
@@ -47,9 +51,14 @@ public class ValidatorController {
 	}
 
 	@RequestMapping(value = "/validateJsr", method = RequestMethod.POST)
-	public String validateJsr(Model model) {
+	public String validateJsr(@Valid UserVoJsr303 userVoJsr303, BindingResult bindingResult, Model model) {
 
-		return "";
+		if(bindingResult.hasErrors())
+			return "validator/view";
+
+		model.addAttribute("userVoJsr303", userVoJsr303);
+
+		return "validator/result";
 	}
 
 }
