@@ -18,13 +18,23 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
-	
+
+	<!-- view Resolover -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
+
+	<!-- view 객체로 전달 하는 역활 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="9" />
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 		<!-- hello : /WEB-INF/view/hello.jsp  치환 -->
 	</bean>
-	
+
+	<!-- Json 처리용 bean -->
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+
 	<!-- RequestPart(multipartResolver 설정 필요) -->
 	<!-- multipart resolver  / id="multipartResolver 는 고정으로 설정되어 있다." -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
