@@ -20,7 +20,7 @@ import java.util.List;
  * @Version :
  */
 @Controller
-public class JasonViewController {
+public class JsonViewController {
 
     @ModelAttribute
     public void modelAttribute(Model model) {

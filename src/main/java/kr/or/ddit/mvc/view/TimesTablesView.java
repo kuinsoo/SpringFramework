@@ -28,7 +28,9 @@ public class TimesTablesView implements View {
     @Override
     public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        int dan = Integer.parseInt(request.getParameter("tables"));
+//        int dan = Integer.parseInt(request.getParameter("tables"));
+        int dan = (Integer)model.get("tables"); // 모델을 사용하는 방법 (추천) (object로 들어온 값을 형변환)
+
         // 웹 화면 보여지려고 PrintWriter사용
         PrintWriter pw = response.getWriter();
 
@@ -57,8 +59,5 @@ public class TimesTablesView implements View {
         pw.print("			</table>");
         pw.print("		</body>");
         pw.print("</html>");
-
-
-
     }
 }

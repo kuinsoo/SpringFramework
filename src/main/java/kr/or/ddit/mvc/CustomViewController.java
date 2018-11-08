@@ -24,7 +24,7 @@ public class CustomViewController {
     }
 
     @RequestMapping("/customViewBeanName")
-    public String customViewbean(@RequestParam("tables")String tables, Model model) {
+    public String customViewbean(@RequestParam(name = "tables",defaultValue = "0")int tables, Model model) {
         model.addAttribute("tables",tables);
         return "timesTablesView";
 
