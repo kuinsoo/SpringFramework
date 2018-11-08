@@ -1,35 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+		 pageEncoding="UTF-8"%>
 
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="blog-header">
+		<h1 class="blog-title">Main</h1>
+		<p class="lead blog-description">Jsp / Spring.</p>
+	</div>
 
+	<div class="row">
 
-<!DOCTYPE html>
-<html>
-<head>
-<!-- head.jsp -->
-<%@ include file="/WEB-INF/view/head.jsp" %>
-<link rel="stylesheet" href="/css/sb-admin.css">
-<link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-<!-- navbar.jsp -->
-<%@ include file="/WEB-INF/view/navbar.jsp" %>
+		<div class="col-sm-8 blog-main">
 
- 	<%@ include file="/WEB-INF/view/common/left.jsp" %>
+			<div class="blog-post">
+				<h2 class="blog-post-title">JSP</h2>
+				<p class="blog-post-meta">2017.10.30, room 201</p>
 
-<div id="wrapper">
-<!-- side -->
-<%-- <%@ include file="/WEB-INF/view/sidebar.jsp" %> --%>
-	<div id="content-wrapper">
-		<div class="container-fluid">
-<!-- container -->
-		어디에 글자가 들어가지?
+				<p>jsp를 통한 웹 프로그래밍 학습</p>
+				<hr>
+
+				<h3>상세내역</h3>
+				<p>JSP과정에서는 다음과 같은 내용을 학습한다.</p>
+				<ul>
+					<li>servlet 동작원리</li>
+					<li>jsp와 servlet의 관계</li>
+					<li>jsp 스크립틀릿 요소</li>
+					<li>jsp action tag (standard)</li>
+					<li>jstl</li>
+					<li>db pooling</li>
+					<li>페이지 모듈화</li>
+				</ul>
+			</div>
 		</div>
-	</div> <!-- content-wrapper -->
-</div> <!-- wrapper -->
-<!-- script src -->
-<%@ include file="/WEB-INF/view/scripts.jsp" %>
-</body>
-</html>
+		<!-- /.blog-main -->
+	</div>
+</div>

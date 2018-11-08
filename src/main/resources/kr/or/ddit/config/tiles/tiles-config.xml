@@ -6,8 +6,24 @@
         <put-attribute name="left" value="/WEB-INF/view/common/left.jsp" />
         <put-attribute name="content" value="" />
     </definition>
-    
+
     <definition name="main" extends="basicLayout">
         <put-attribute name="content" value="/WEB-INF/view/main.jsp" />
+    </definition>
+
+    <definition name="userAllList" extends="basicLayout">
+        <put-attribute name="content" value="/WEB-INF/view/user/userAllList.jsp" />
+    </definition>
+
+    <definition name="userPagingList" extends="basicLayout">
+        <put-attribute name="content" value="/WEB-INF/view/user/userPagingList.jsp" />
+    </definition>
+
+    <definition name="userDetail" extends="basicLayout">
+        <put-attribute name="content" value="/WEB-INF/view/user/userDetail.jsp" />
+    </definition>
+
+    <definition name="userFormUpdate" extends="basicLayout">
+        <put-attribute name="content" value="/WEB-INF/view/user/userFormUpdate.jsp" />
     </definition>
 </tiles-definitions>

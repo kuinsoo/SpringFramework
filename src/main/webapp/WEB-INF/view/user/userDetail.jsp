@@ -1,12 +1,6 @@
-<%@page import="java.util.Set"%>
-<%@page import="kr.or.ddit.util.model.PageVo"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.or.ddit.user.userService.UserService"%>
-<%@page import="kr.or.ddit.user.userService.UserServiceInf"%>
-<%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -45,22 +39,12 @@
 </style>
 
 
-<% SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-%>
+<% SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");%>
 
-
-</head>
-
-<body>
-	<%-- @은 지시자 --%>
-	<%-- header --%>
-	<%@ include file="/WEB-INF/view/common/header.jsp"%>
 
 	<div class="container-fluid">
 		<div class="row">
 
-			<%-- left --%>
-			<%@ include file="/WEB-INF/view/common/left.jsp"%>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
@@ -160,5 +144,3 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>

@@ -55,7 +55,7 @@ public class UserController {
 		
 		model.addAttribute("userAllList",userList);
 		
-		return "user/userAllList";
+		return "userAllList";
 	}
 	
 	@RequestMapping("/userPageList")
@@ -79,7 +79,7 @@ public class UserController {
 		/*// forward (userAllList.jsp --> userPagingList.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("/user/userPagingList.jsp");
 		rd.forward(request, response);*/
-		return "user/userPagingList";
+		return "userPagingList";
 	}
 	
 	@RequestMapping("/userDetail")
@@ -90,7 +90,7 @@ public class UserController {
 		 */
 		UserVo userInfo = userService.selectUser(userId);
 		model.addAttribute("userInfo", userInfo);
-		return "user/userDetail";
+		return "userDetail";
 	}
 	
 	@RequestMapping(value="/userForm", method= RequestMethod.GET)
@@ -118,7 +118,7 @@ public class UserController {
 	public String userFormmUpdate(@RequestParam("userId")String userId, UserVo userVo, Model model) {
 		userVo = userService.selectUser(userId);
 		model.addAttribute("userVo",userVo);
-		return "user/userFormUpdate";
+		return "userFormUpdate";
 	}
 	
 	@RequestMapping(value="/userFormUpdate", method=RequestMethod.POST) 

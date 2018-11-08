@@ -1,30 +1,9 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.util.Set"%>
-<%@page import="kr.or.ddit.util.model.PageVo"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.or.ddit.user.userService.UserService"%>
-<%@page import="kr.or.ddit.user.userService.UserServiceInf"%>
-<%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
-<title>userFormUpdate.jsp</title>
-<%@ include file="/WEB-INF/view/common/basicLib.jsp"%>
 
 <!--  jquesry ui css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -101,9 +80,7 @@
 	
 </style>
 
-</head>
 
-<body>
 	<%-- @은 지시자 --%>
 	<%-- header --%>
 	<%@ include file="/WEB-INF/view/common/header.jsp"%>
@@ -234,5 +211,3 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
