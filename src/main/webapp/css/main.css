@@ -7,3 +7,7 @@ body {
 .jumbotron {
 	margin-top: 31px
 }
+
+.sidebar {
+	float: left;
+}

@@ -25,19 +25,7 @@
 	<div id="content-wrapper">
 		<div class="container-fluid">
 <!-- container -->
-			<!-- <div class="container"> -->
-			<div class="jumbotron">
-			  <h1 class="display-3">Wellcome to The KKu! island</h1>
-			  <p class="lead">기회는 준비하고 도전하지 않으면 잡을 수 없다.</p>
-			  <hr class="my-4">
-			  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-			  <p class="lead">
-			    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-			  </p>
-			</div>
-			<!-- </div>  --><!-- end container -->
-<!-- footer -->
-<%@ include file="/WEB-INF/view/footer.jsp" %>
+		어디에 글자가 들어가지?
 		</div>
 	</div> <!-- content-wrapper -->
 </div> <!-- wrapper -->
