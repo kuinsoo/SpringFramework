@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.userService.UserServiceInf;
 import kr.or.ddit.util.model.PageVo;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Controller
 @RequestMapping("/user")
@@ -73,8 +74,8 @@ public class UserController {
 		// request 객체에 저장 
 		request.setAttribute("pageList", userList);
 		request.setAttribute("pageCnt", pageCnt);*/
-		Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
-		model.addAllAttributes(resultMap);
+//		Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+//		model.addAllAttributes(resultMap);
 		
 		/*// forward (userAllList.jsp --> userPagingList.jsp)
 		RequestDispatcher rd = request.getRequestDispatcher("/user/userPagingList.jsp");
@@ -134,4 +135,24 @@ public class UserController {
 		int resultCnt = userService.updateUser(userVo);
 		return "redirect:userDetail?userId="+userVo.getUserId();
 	}
+
+	@RequestMapping(value = "/userPageListAjax")
+	public String userPageListAjax(Model model, PageVo pageVo) {
+		Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+		model.addAllAttributes(resultMap);
+		return "jsonView";
+	}
+
+    @RequestMapping(value = "/userPageListAjaxHtml")
+    public String userPageListAjaxHtml(Model model, PageVo pageVo) {
+        Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+        model.addAllAttributes(resultMap);
+        return "user/pageListHtml";
+    }
+    @RequestMapping(value = "/userPageListAjaxPagination")
+    public String userPageListAjaxPagination(Model model, PageVo pageVo) {
+        Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+        model.addAllAttributes(resultMap);
+        return "user/pagination";
+    }
 }

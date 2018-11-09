@@ -1,5 +1,6 @@
 package kr.or.ddit.user.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSessionBindingEvent;
@@ -31,6 +32,10 @@ public class UserVo implements HttpSessionBindingListener {
 	// 페이징 처리
 	private int rnum;
 
+	public String getFormattedBirth() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(birth);
+	}
 	
 	public int getRnum() {
 		return rnum;

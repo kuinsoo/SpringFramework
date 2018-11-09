@@ -6,12 +6,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-	
+
 	<mvc:annotation-driven />
-	
+
 	<!-- 스프링에서 처리 불가능한 리소스를 was의 default serlvet 전달 -->
 	<mvc:default-servlet-handler/>
-	
+
 	<context:annotation-config />
 
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
@@ -55,10 +55,10 @@
 	<!-- RequestPart(multipartResolver 설정 필요) -->
 	<!-- multipart resolver  / id="multipartResolver 는 고정으로 설정되어 있다." -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="5242880" /> 
+		<property name="maxUploadSize" value="5242880" />
 		<property name="maxInMemorySize" value="5242880" />
 	</bean>
-	
+
 	<!-- 날짜 format -->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 
@@ -67,7 +67,10 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:kr/or/ddit/config/msg/error</value>
+				<value>classpath:kr/or/ddit/config/msg/msg</value>
+
 			</list>
 		</property>
 	</bean>
+
 </beans>
