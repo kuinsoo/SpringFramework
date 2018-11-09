@@ -32,9 +32,17 @@ public class UserVo implements HttpSessionBindingListener {
 	// 페이징 처리
 	private int rnum;
 
+	public UserVo(String userId, String name) {
+		this.userId = userId;
+		this.name = name;
+	}
+
 	public String getFormattedBirth() {
+		if(birth  != null) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(birth);
+		}
+		return "2018-08-09";
 	}
 	
 	public int getRnum() {

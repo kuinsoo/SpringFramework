@@ -1,28 +1,27 @@
 package kr.or.ddit.prod.prodDao;
 
-import kr.or.ddit.config.db.SqlFactoryBuilder;
 import kr.or.ddit.prod.model.ProdVo;
 import kr.or.ddit.util.model.PageVo;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
 public class ProdDao implements ProdDaoInf {
-	
+
+	@Resource(name = "sqlSessionTemplate")
+	private SqlSessionTemplate template;
 
 	// prod 전체 가지고 오는 쿼리 
 	@Override
 	public List<ProdVo> selectProdAll() {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
+
 		
-		List<ProdVo> list = session.selectList("prod.prodList");
+		List<ProdVo> list = template.selectList("prod.prodList");
 		
-		session.close();
-		
+
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
 		// selectOne : 데이터가 한건 일 떄 
@@ -32,18 +31,14 @@ public class ProdDao implements ProdDaoInf {
 
 	@Override
 	public List<ProdVo> selectProdPageList(PageVo pageVo) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-	
-		List<ProdVo> prodPageList = session.selectList("prod.selectProdPageList", pageVo);
+		List<ProdVo> prodPageList = template.selectList("prod.selectProdPageList", pageVo);
 		
 		// 명시적으로 처리해 주기 
 		//session.rollback();
 		//session.commit();
 		
 		// 세션을 사용했으니깐 닫아준다
-		session.close();
-		
+
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
 		// selectOne : 데이터가 한건 일 떄 
@@ -60,24 +55,17 @@ public class ProdDao implements ProdDaoInf {
 	*/
 	@Override
 	public int getProdCnt() {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int totalProdCnt = session.selectOne("prod.getProdCnt");
-		session.close();
-		
+
+		int totalProdCnt = template.selectOne("prod.getProdCnt");
+
 		return totalProdCnt;
 	}
 
 	// 상품 상세 정보 나오게 설정하는 방법 
 	public ProdVo selectProd(String prodId) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		ProdVo prodVo = session.selectOne("prod.prodDetail",prodId);
-		
-		session.close();
-		
+
+		ProdVo prodVo = template.selectOne("prod.prodDetail",prodId);
+
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
 		// selectOne : 데이터가 한건 일 떄 

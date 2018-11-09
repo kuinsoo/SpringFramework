@@ -22,7 +22,11 @@ public class FileService implements FileServiceInf {
 	 */
 	@Override
 	public int insertFile(FileVo fileVo) {
-		return fileDao.insertFile(fileVo);
+		int insertCnt = fileDao.insertFile(fileVo);
+//		if(true)
+//		throw new RuntimeException();
+
+		return insertCnt;
 	}
 
 	

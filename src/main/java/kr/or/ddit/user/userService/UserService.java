@@ -19,14 +19,6 @@ import kr.or.ddit.util.model.PageVo;
 public class UserService implements UserServiceInf {
 	
 	public UserService() {}
-	private static UserServiceInf us = null;
-	
-	public static UserServiceInf getInstance() {
-		if(us == null) {
-			us = new UserService();
-		}
-		return us;
-	}
 
 	@Resource(name="userDao")
 	private UserDaoInf ud;

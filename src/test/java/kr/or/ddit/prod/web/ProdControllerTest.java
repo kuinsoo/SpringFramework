@@ -3,15 +3,13 @@ package kr.or.ddit.prod.web;
 import kr.or.ddit.prod.model.ProdVo;
 import kr.or.ddit.prod.prodService.ProdServiceInf;
 import kr.or.ddit.test.ControllerTest;
+import kr.or.ddit.test.ServiceDaoTestConfig;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * kr.or.ddit.prod.web
@@ -22,7 +20,7 @@ import static org.junit.Assert.*;
  * @Date : 2018-11-07 / 오전 9:24
  * @Version :
  */
-public class ProdControllerTest extends ControllerTest {
+public class ProdControllerTest extends ServiceDaoTestConfig {
 
 	@Resource(name = "prodService")
 	private ProdServiceInf prodService;

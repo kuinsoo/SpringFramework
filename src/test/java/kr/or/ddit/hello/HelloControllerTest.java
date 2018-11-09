@@ -1,19 +1,18 @@
 package kr.or.ddit.hello;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import java.util.List;
-
+import kr.or.ddit.test.ControllerTest;
+import kr.or.ddit.user.model.UserVo;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.or.ddit.test.ControllerTest;
-import kr.or.ddit.user.model.UserVo;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 
 @SuppressWarnings("unchecked")

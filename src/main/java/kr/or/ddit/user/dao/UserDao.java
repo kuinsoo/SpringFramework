@@ -4,36 +4,30 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.config.db.SqlFactoryBuilder;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
 
+import javax.annotation.Resource;
+
 @Repository
 public class UserDao implements UserDaoInf {
 	
 	public UserDao () {}
-	private static UserDaoInf ud = null;
 	
-	public static UserDaoInf getInstance() {
-		if(ud == null) {
-			ud = new UserDao();
-		}
-		return ud;
-	}	
-	
+	@Resource(name = "sqlSessionTemplate")
+	private SqlSessionTemplate template;
 	
 	// jspuser 테이블 테이터 전체 조회 쿼리 
 	// select query id : selectUserAll
 	public List<UserVo> selectUserAll(){
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
 		
 		
-		List<UserVo> list = session.selectList("user.selectUserAll");
+		List<UserVo> list = template.selectList("user.selectUserAll");
 		
-		session.close();
 		
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
@@ -45,12 +39,12 @@ public class UserDao implements UserDaoInf {
 	// jspuser 테이블 테이터 전체 조회 쿼리 
 	// select query id : selectUserAll
 	public UserVo selectUser(String userId){
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
 		
-		UserVo user = session.selectOne("user.selectUser",userId);
 		
-		session.close();
+		
+		UserVo user = template.selectOne("user.selectUser",userId);
+		
+		
 		
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
@@ -61,13 +55,10 @@ public class UserDao implements UserDaoInf {
 	
 	
 	public UserVo selectUserByVo(UserVo userVo){
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
+
+		UserVo user = template.selectOne("user.selectUserByVo", userVo);
 		
-		UserVo user = session.selectOne("user.selectUserByVo", userVo);
-		
-		session.close();
-		
+
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
 		// selectOne : 데이터가 한건 일 떄 
@@ -80,18 +71,15 @@ public class UserDao implements UserDaoInf {
 	// 페이징 처리 
 	@Override
 	public List<UserVo> selectUserPageList(PageVo pageVo) {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-	
-		List<UserVo> userList = session.selectList("user.selectUserPageList", pageVo);
+
+		List<UserVo> userList = template.selectList("user.selectUserPageList", pageVo);
 		
 		// 명시적으로 처리해 주기 
-		//session.rollback();
-		//session.commit();
+		//template.rollback();
+		//template.commit();
 		
 		// 세션을 사용했으니깐 닫아준다
-		session.close();
-		
+
 		// 매개변수가 없어서 값을 주지 않아도 된다 
 		// 여러건을 조회할때에는 selectList를 사용한다
 		// selectOne : 데이터가 한건 일 떄 
@@ -109,12 +97,9 @@ public class UserDao implements UserDaoInf {
 	*/
 	@Override
 	public int getUserCnt() {
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int totalUserCnt = session.selectOne("user.getUserCnt");
-		session.close();
-		
+
+		int totalUserCnt = template.selectOne("user.getUserCnt");
+
 		return totalUserCnt;
 	}
 	
@@ -129,15 +114,10 @@ public class UserDao implements UserDaoInf {
 	@Override
 	public int insertUser(UserVo userVo){
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
+
+		int insertCnt = template.insert("user.insertUser", userVo);
 		
-		int insertCnt = session.insert("user.insertUser", userVo);
-		
-		// commit을 해야 데이터가 확정된다 ( 꼭 해주기 !)
-		session.commit();
-		session.close();
-		
+
 		return insertCnt;
 	}
 
@@ -151,16 +131,10 @@ public class UserDao implements UserDaoInf {
 	*/
 	@Override
 	public int deleteUser(String userId) {
+
+		int deleteCnt = template.delete("user.deleteUser", userId);
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int deleteCnt = session.delete("user.deleteUser", userId);
-		
-		// commit을 해야 데이터가 확정된다 ( 꼭 해주기 !)
-		session.commit();
-		session.close();
-		
+
 		return deleteCnt;
 	}
 
@@ -175,15 +149,10 @@ public class UserDao implements UserDaoInf {
 	@Override
 	public int updateUser(UserVo userVo) {
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
-		
-		int updateCnt = session.update("user.updateUser", userVo);
+		int updateCnt = template.update("user.updateUser", userVo);
 		
 		// commit을 해야 데이터가 확정된다 ( 꼭 해주기 !)
-		session.commit();
-		session.close();
-		
+
 		return updateCnt;
 	}
 

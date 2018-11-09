@@ -3,9 +3,12 @@ package kr.or.ddit.board.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.board.model.BoardVo;
+
+import javax.annotation.Resource;
 
 /* 애노테이션을 통한 빈 등록 
  * bean 애노테이션은 : @Controller, @Service, @Repository, @Component
