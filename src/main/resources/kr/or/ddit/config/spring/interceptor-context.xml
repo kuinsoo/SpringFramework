@@ -5,14 +5,14 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/*?"/>
             <!--<mvc:exclude-mapping path="" />-->
             <bean class="kr.or.ddit.intercepter.PerformanceCheckInterceptor" />
         </mvc:interceptor>
 
         <!-- 파라미터를 통한 로케일 정보 수정  -->
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/*?"/>
             <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
                 <property name="paramName" value="lang" />
             </bean>
