@@ -27,7 +27,7 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 	/*
 	@Resource(name="pageVo")
 	private PageVo userPage;
-	*
+	*/
 	
 	private final String TETUSERID = "test";
 	
