@@ -135,7 +135,7 @@ public class UserServiceTest extends ServiceDaoTestConfig {
 		Map<String , Object> resultMap = userService.selectUserPageList(userPage);
 		
 		
-		List<UserVo> userList = (List<UserVo>)resultMap.get("userList");
+		List<UserVo> userList = (List<UserVo>)resultMap.get("pageList");
 		
 		int pageCnt = (Integer)resultMap.get("pageCnt");
 

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.config.db.SqlFactoryBuilder;
@@ -19,8 +20,10 @@ import kr.or.ddit.util.model.PageVo;
 public class UserService implements UserServiceInf {
 	
 	public UserService() {}
+	@Resource(name = "sqlSessionTemplate")
+	private SqlSessionTemplate template;
 
-	@Resource(name="userDao")
+	@Resource(name = "userDao")
 	private UserDaoInf ud;
 
 	
@@ -91,14 +94,10 @@ public class UserService implements UserServiceInf {
 	@Override
 	public int deleteUser(String userId) {
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
 		
-		int deleteCnt = session.delete("user.deleteUser", userId);
+		int deleteCnt = template.delete("user.deleteUser", userId);
 		
 		// commit을 해야 데이터가 확정된다 ( 꼭 해주기 !)
-		session.commit();
-		session.close();
 		
 		return deleteCnt;
 	}
@@ -114,14 +113,10 @@ public class UserService implements UserServiceInf {
 	@Override
 	public int updateUser(UserVo userVo) {
 		
-		SqlSessionFactory factory = SqlFactoryBuilder.getSqlSessionFactory();
-		SqlSession session = factory.openSession();
 		
-		int updateCnt = session.delete("user.updateUser", userVo);
+		int updateCnt = template.delete("user.updateUser", userVo);
 		
 		// commit을 해야 데이터가 확정된다 ( 꼭 해주기 !)
-		session.commit();
-		session.close();
 		
 		return updateCnt;
 	}
