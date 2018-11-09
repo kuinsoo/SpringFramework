@@ -141,7 +141,7 @@ public class UserServiceTest extends ServiceDaoTestConfig {
 
 		/***Then : 결과가 어떠해야하는지 정의 ***/
 		assertEquals(10 ,userList.size());
-		assertEquals(11 ,pageCnt);
+		assertEquals(12 ,pageCnt);
 	}
 	
 	// 테스트 이름은 메서드뒤에 test입력하기 

@@ -24,10 +24,10 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 	
 	@Resource(name="userDao")
 	private UserDaoInf userDao;
-	
+	/*
 	@Resource(name="pageVo")
 	private PageVo userPage;
-	
+	*
 	
 	private final String TETUSERID = "test";
 	
@@ -38,7 +38,7 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 
 
 	// DB에 jspuser 부분의 회원이 몇명있는지 확인하는 부분 
-	// 운영메소드 이름 + Test
+	// 운영메소드 이름 + Test//////////////////////////////
 	@Test
 	public void selectUserAllTest() {
 		/***Given : 주어진 상황 ***/
@@ -96,7 +96,7 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 	@Test
 	public void selectUserPageList(){
 		/***Given : 주어진 상황 ***/
-		
+		PageVo userPage = new PageVo();
 	
 		userPage.setPage(2);
 		userPage.setPageSize(10);
@@ -126,7 +126,7 @@ public class UserDaoTest extends ServiceDaoTestConfig {
 		
 		/***Then : 결과가 어떠해야하는지 정의 ***/
 		   
-		assertEquals(108, totalUserCnt);
+		assertEquals(116,totalUserCnt);
 	
 	}
 
