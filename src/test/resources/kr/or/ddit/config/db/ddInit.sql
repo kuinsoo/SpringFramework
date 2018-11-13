@@ -130,3 +130,9 @@ insert into jspuser values ('ryan8','testUserId','pass1234','대전 중구 중�
 insert into jspuser values ('0998888888888','testUserI','pass1234','대전 중구 중앙로 76','영민빌딩 2층 대덕인재개발원','34940','18/08/08','newUser@gmail.com','0422228202','');
 insert into jspuser values ('testtttttt','testUserId','pass1234','대전 중구 중앙로 76','영민빌딩 2층 대덕인재개발원','34940','18/08/08','newUser@gmail.com','0422228202','/profile/ryan8.png');
 insert into jspuser values ('taaaaaaaaaaaaaaa','testUserId','pass1234','대전 중구 중앙로 76','영민빌딩 2층 대덕인재개발원','34940','18/08/08','newUser@gmail.com','0422228202','/profile/noimage.png');
+
+
+-- 초기화 코드
+delete from calendar;
+
+

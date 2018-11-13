@@ -18,5 +18,6 @@
         <mapper resource="kr/or/ddit/config/db/user.xml"/>
         <mapper resource="kr/or/ddit/config/db/prod.xml"/>
         <mapper resource="kr/or/ddit/config/db/rangers.xml"/>
+        <mapper resource="kr/or/ddit/config/db/util.xml"/>
     </mappers>
 </configuration>

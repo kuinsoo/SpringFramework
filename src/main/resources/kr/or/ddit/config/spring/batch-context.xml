@@ -5,10 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="logTask" class="kr.or.ddit.util.LogTask"></bean>
+	<bean id="springTask" class="kr.or.ddit.util.SpringTask"></bean>
 	<task:scheduler id="scheduler"/>
 	<task:scheduled-tasks scheduler="scheduler">
-		<task:scheduled ref="logTask" method="logging" cron="* * * */1 * *"/> <!-- 초/? << 값 분/? 방식표현  시 ...  -->
+		<task:scheduled ref="springTask" method="logging" cron="*/10 * * * * *"/> <!-- 초/? << 값 분/? 방식표현  시 ...  -->
+		<task:scheduled ref="springTask" method="makMothlyCalender" cron="0 0 23 L * *"/> 
 	</task:scheduled-tasks>
 	
 </beans>
