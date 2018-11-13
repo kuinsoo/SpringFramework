@@ -9,7 +9,7 @@
 	<task:scheduler id="scheduler"/>
 	<task:scheduled-tasks scheduler="scheduler">
 		<task:scheduled ref="springTask" method="logging" cron="*/10 * * * * *"/> <!-- 초/? << 값 분/? 방식표현  시 ...  -->
-		<task:scheduled ref="springTask" method="makMothlyCalender" cron="0 0 23 L * *"/> 
+		<task:scheduled ref="springTask" method="makMothlyCalender" cron="0 0 3 1 * *"/> 
 	</task:scheduled-tasks>
 	
 </beans>
